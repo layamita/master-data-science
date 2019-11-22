@@ -1,0 +1,30 @@
+##########
+# Import #
+##########
+
+    import numpy as np
+
+LAS LISTAS SON PROPIAS DE PYTHON, LOS ARRAY SON DE NUMPY, ES MAS EFICIENTE EL USO DE ARRAYS
+
+##########
+# Arrays #
+##########
+    Creación
+    np.linspace(0, 100, 50) :: Crea un array desde 0 a 100 de 50 alementos
+    np.arange(10,30,5)	    :: Crea un array desde 10 a 30 con salto de 5
+    np.array([1,2,3])
+
+    ############
+    # Formulas #
+    ############
+    np.cos(X)
+    np.sin(X)
+
+    ##########
+    # Matriz #
+    ##########
+    np.arange(10000).reshape(100,100)	=> modifica el array en matriz, deben tener las mismas cantidades de elementos
+    np.zeros([4,2])
+    np.ones([4,2])
+    np.ones_like(ej)
+    np.eye(4) 			=> Matriz de identidad

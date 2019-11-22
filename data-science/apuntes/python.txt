@@ -1,0 +1,237 @@
+##########
+# Varios #
+##########
+    type(a)
+    isinstance(a,dict)
+    hasattr(a,'capitalize')     => para checquear si un objeto tiene un atributo
+    dir(a)					    => muestra todos los atributos del tipo
+    a.copy()		            => creo objeto nuevo
+    a.__hash__()                :: Muestra hash unico asociado al objeto
+    id(a)                       :: muestra id
+
+###################
+# Using the shell #
+###################
+    with !, we can send commands to the underlying operating system.
+    ! pwd
+
+##########################################
+# Capturing the output of shell commands #
+##########################################
+
+    a =! ls -l  :: Devuelve una lista
+    a =! cat Text_example.txt
+    a.n         :: pasa todo a string con \n en las nuevas lineas
+    a.s         :: pasa todo a string
+
+    files_in_dir =! ls *.txt*
+
+    ! wc $files_in_dir.s                    :: You can use curly braces to substitute the value of a Python expression within a shell command
+        307  1251  9344 20191025.txt
+        70   267  1514 20191026.txt
+        377  1518 10858 total
+
+################
+# Scalar Types #
+################
+    nt      = Signed integer with maximum value determined by the platform.
+    long    = Arbitrary precision signed integer. Large int values are automatically converted to long.
+    float   = floating point number
+    str     = String type
+    bool    = A True or False value
+    None    = The Python “null” value (only one instance of the None object exists)
+
+
+    STRINGS
+    #######
+    Strings are immutable!!, You cannot modify a string without creating a new string
+    k+' and this is also'
+    k.find("s")
+    k.index("s")
+    k.count('s')
+    k.split()               :: hace un explode por espacio ' '
+    '^'.join(k.split())     :: hace un imploid
+
+
+###########
+# Módulos #
+###########
+
+    Archivos de texto con extensión `.py` que usamos para organizar nuestro código.
+    some_module.py
+
+        def test(x):
+            return x+2
+
+    import some_module
+
+    some_module.test(5) :: Devuelve 7
+
+
+########
+# Flow #
+########
+
+    IF
+    ##
+        if(x>0):
+            print('Posi')
+            if(x>=10):
+                print("may que 10")
+        elif x==0:
+            print("cero")
+        else:
+            print("neg")
+
+    ForEach
+    #######
+        seq=[1,2,3,None,4,5]
+        total = 0
+        for i in seq:
+            if i is None:
+                continue
+            total+=i
+
+        print(total)
+
+
+    While
+    #####
+        i=0
+        total=0
+        while i<5:
+            total+=i
+            print(total)
+            i+=1
+
+    Pass :: No hace nada. Nos puede servir cuando Python requiere un bloque de código pero no estamos listos para escribir nada todavía.
+    def my_superb_function():
+        pass
+
+########
+# CAST #
+########
+    int()
+    str()
+
+    if(not isinstance(year,int)):
+        year=int(year)
+    print(name+" cumplirá 100 años en: "+str(year+100))
+
+##########
+# Listas #
+##########
+    stars= ['Alderaan','Arcturus','Vega']
+    len(starts)                 :: 3
+
+    stars.append('d').   		agrega al final
+    stars.extend(['Y'])			concatena una lista al final
+    stars.remove('a')	 		quita el primero que encuentra
+    stars.pop(0)				saca el elem de la pos 0, si no le pones param saca el último
+    stars.count('a')
+    stars.index('a')     		la pos del primero que encuentra
+
+    SORT
+    ####
+        stars.reverse()                     :: invierte y modifica
+        list(reversed(stars))               :: muestra como seria el orden inverso pero sin modificar la lista
+
+        stars.sort()				        :: ordena alfabeticamente
+        stars.sort(key=str)		            :: ordena como string
+        stars.sort(key=int)		            :: ordena como entero
+        stars.sort(key=len, reverse=True)	:: ordena cantidad de elementos
+        list(sorted(numbers, key=len,reverse=True))
+        list(sorted(new_starts,key=str.lower))
+
+    Sort by custom functions
+    ########################
+        stars.sort(key=lambda x: x.lower().count('a'),reverse=True)
+
+
+
+    stars = stars + ['Z']		concatenamos dos listas
+    stars   = ['Alderaan','Arcturus','Vega']
+    stars[:2]   :: ['Alderaan', 'Arcturus']
+    stars[1:]   :: ['Alderaan', 'Arcturus']
+    stars[-1] 	:: Devuelve el último elemento
+    stars[:-2]	:: hasta la -2 (no inclusive)
+
+
+
+    'G' in stars				devuelve TRUE si el elemento está en la lista
+
+    #Para tener el indice en c
+    for c, val in enumerate([1,2,3]):
+        print(c,val)
+
+    #Lambda
+    the_same_function = lambda x: x**2
+
+    Map
+    ###
+        for i in map(the_same_function,[1,2,3]):
+            print(i)
+
+
+    list comprehension
+    ##################
+        a2 = [value**2 for value in t if value%2==0]  ::  Obtener el cuadrado de todos los números pares de la lista a
+        Por cada elemento primero ejecuta el if y despues el cuadrado
+
+        a3 = [value**2 if value%2==0 else 1 for value in t ]
+        Por cada elemento ejecuta el cuadrado y evaua el resultado con el if
+
+        Obtener una lista en mayusculas de todas las palabras de mas de dos caracteres
+        a4 = [value.upper() for value in list_strings if len(value) > 2]
+
+     nested list comprehension
+     #########################
+
+        list_of_list=[[1,2,3],[4,5,6],[7,8,9]]
+        second_list=[element for other_list in list_of_list for element in other_list]
+
+
+    ########
+    Ejemplos
+    ########
+
+    a_starts.sort(key=lambda x: x.lower().count('a'),reverse=True)  Como key le pasamos una funcion lambda que pasa a minusculas y calcula las cantidades de a
+    lambda_count_a = lambda x: x.lower().count('a')
+    new_starts.sort(key=lambda_count_a,reverse=True)
+
+###########
+# Strings #
+###########
+    t.strip().  	=> quitamos espacios
+    t.split(',')	=> array explode
+    '^'.join(['chau', ' guille', ' como', ' te', ' va'])
+    t.upper()
+    t.lower()
+
+#########
+# Files #
+#########
+    ! curl http://www.gutenberg.org/files/76/76-0.txt > Finn.txt
+    f = open('Finn.txt');
+    f.read(10) lee esa cantidad de caracteres
+    f.readline() lee linea entera
+    f.readlines() lee todo
+    f.seek(0) volvemos al inicio
+    f = open("prueba.txt",'a')
+    f.write("holissss")
+    f.close()
+
+
+####################
+# Def de funciones #
+####################
+    def mu_func():
+        pass
+
+    def multiple():
+        global x
+
+##############
+# Operadores #
+##############
+    not, and

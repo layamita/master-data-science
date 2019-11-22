@@ -1,0 +1,11 @@
+##########
+# Import #
+##########
+    from math import sin as seno
+    from math import *
+    from math import factorial as fact
+
+#############
+# Funciones #
+#############
+    fact(2)

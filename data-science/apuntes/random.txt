@@ -1,0 +1,9 @@
+##########
+# Import #
+##########
+    import random as rnd;
+
+#############
+# Funciones #
+#############
+    random.randint(10,20)

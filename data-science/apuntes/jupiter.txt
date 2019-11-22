@@ -1,0 +1,30 @@
+import random as rnd;
+#SHELL
+%automagic		=> apago/enciendo
+%lsmagic		=> lista comando de func. magics
+
+%whos			=> lista las variables creadas
+%xdel a			=> elimino la variable a
+
+!wc $t			=> t es una variable
+
+%%!
+pwd
+ls -la
+			=> Devuelve el resultado en una lista
+
+%%bash
+pwd 
+ls -la
+			=> Devuelve un string
+			
+a =! ls -la		=> a es un array con las lineas del resultado
+
+
+
+
+
+
+
+
+

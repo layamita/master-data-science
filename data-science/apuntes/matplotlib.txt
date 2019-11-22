@@ -1,0 +1,13 @@
+##########
+# Import #
+##########
+    import matplotlib.pyplot as plt
+    %matplotlib inline
+
+############
+# Gráficos #
+############
+
+    plt.plot(X,S,"r.")              :: Linea Continua
+    plt.scatter(X,S,color="red");   :: Linea Punteada
+    plt.grid(True)

@@ -1,0 +1,30 @@
+cat optd_aircraft.csv | tr ^ \;
+
+
+
+cat optd_por_public.csv | head -1 | tr "^" "\n"  > head
+paste <(seq 1 46) <(cat head)
+
+
+
+cut -d "^" -f 1 optd_airlines.csv | grep -i "aero" | wc -l
+cut -d "^" -f 8 optd_airlines.csv | grep -iE "^aero" | wc -l
+
+
+
+cat optd_por_public.csv | head -1 | tr "^" "\n" | grep -i "name" | wc -l
+
+
+sed 's/line/\n/g' Text_example_copy.txt
+
+
+
+byRevenue:          true,
+                        byVarRevenue:       true,
+                        byVarEcpmRevenue:   true
+						
+						
+						
+http://dev.prelanders.gasmobi.com/prela/demo/view.i?url=123d
+
+http://dev.prelanders.gasmobi.com/prela/demo2/view.i?url=123d

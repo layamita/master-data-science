@@ -1,0 +1,262 @@
+#!/bin/bash
+PATH=$PATH:/Users/guillermoallendes/my_scrypts/
+
+en el .bashrc
+export PATH="/Users/guillermoallendes/my_scrypts/:$PATH"
+
+[:blank:]
+[:digit:]
+[:upper:]
+[:lower:]
+
+############################################################################################################
+
+VAR = 'guille'   		=> creo una variable
+echo $VAR				=> imprime variable
+printenv				=> muestra todas las variables existente
+`date`					=> estas comillas ejecutan un comando
+echo "$(command)"		=> ejecuta un comando
+echo "lal"\				=> la contrabarra es util para continuar con el comando
+echo "1"; echo "2"		=> ; para concatenar comandos
+ls -1					=> lista el resultado en columna
+ls -a					=> lista archivos ocultos
+ls -l					=> agrega info como permisos, owner, etc....
+	-S  				=> sort by file size
+	-r 					=> reverse order while sorting
+	-t 					=> sort by modification time, newest first
+	-X 					=> sort alphabetically by entry extension
+which binario			=> 
+whereis binario			=> 
+cp -p					=> copia fichero y también los permisos
+less -N -S				=> n para linea, s para linea completa 
+
+CTRL + u  				=> cut/erase the whole line
+CTRL + k 				=> cut/erase line right
+history -10				=> muestra las ultimas 10
+cat -n optd_aircraft.csv | head -10 	=> traigo los primeros 10 desde el head
+cat -n optd_aircraft.csv | tail -10 	=> traigo los primeros 10 desde abajo
+wc [-clmw] [file ...].  => cuenta lineas (l), palabras (w), caracteres(m) o bytes (c)
+>						=> sobreescribe
+>>						=> concatena 
+
+find .
+		-iname "readme.md" (i no distingue may y min)
+		-name "*.pdf"
+		-type f|d (file, directory)
+		-maxdepth 1
+		-mindepth 6
+		-empty
+		-size 10M
+		-mmin 60 						(fecha de modificación) 
+		-exec ls -l {} \; 				(la llave representa al valor devuelto por el find, el \; obligatorio)
+		-exec sh -c "ls -s {} | wc" \; 	(sh -c " ")
+		
+	
+cat 1e9d6d2d-7a94-4f88-878e-566630be854c.csv | grep -oE "cpc=[[:digit:]]*\.[[:digit:]]*" | grep -oE "[[:digit:]]*\.[[:digit:]]*" >> costs.csv
+
+###########
+#	SEQ  #
+###########
+seq 1 2 10				=> inicio salto fin
+
+###########
+#	SORT  #
+###########
+sort file				=> devuele el contenido ordenado 
+	-n					=> ordenacion numerica
+	-d					=> ordenacion alphanumerica
+	-r					=> ordenacion reverso
+	-u					=> lista los unicos
+sort | uniq 			=> devuelve filas unicas
+
+sort -t "^" --key=1 optd_aircraft.csv | head
+en caso de csv, se le pasa el delimitador y ordena por columna 1
+
+###########
+#	UNIQ  #
+###########
+uniq -c				=> devuelve la cantidad de elementos duplicados por cada elemento
+
+###########
+#	CUT   #
+###########
+
+cut -d "^" -f 1-3,5 optd_aircraft.csv | head -10. 
+ -d es el delimitador
+ -f son las fields de 1 a 3 y la 5
+
+
+###########
+#TRANSLATE#
+###########
+
+|  tr it aa  => cambio i por a y t por a
+
+echo "masssster     data" | tr -s "s " 	=> master data, elimina repeticiones
+echo "masssster     data" | tr -d "s " 	=> materdata, borra dichos caracteres
+
+echo "masssster     data" | tr -d "[:blank:]" => borra espacios en blanco usando una clase de caracteres
+echo "master 234234 data    343 s12nce" | tr -d "[:digit:]"	=> borra los digitos
+
+#######
+#PASTE#
+#######
+
+paste -d "-" numbers numbers
+1-1
+2-2
+3-3
+
+
+paste -s -d "-" numbers numbers
+1-2-3-4-5-6-7-8-9-10
+1-2-3-4-5-6-7-8-9-10
+
+ls | paste -d " " - - -
+2018-02-01 20lines.txt Applications Books
+Boston.csv Calibre Library Desktop Documents
+Downloads Dropbox Ingreso en barrios.ipynb Library
+
+
+paste <(cat numbers) <(cat numbers)
+paste <(seq 15) <(cat Text_example.txt)
+
+######
+#GREP#
+######
+
+
+grep "this" Text_example.txt
+
+grep -i "this" Text_example.txt
+'THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+this line is the 1st lower case line in this file.
+This Line Has All Its First Character Of The Word With Upper Case.
+Two lines above this are empty.
+And this is the last line.'
+
+grep -v "this" Text_example.txt
+'THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+This Line Has All Its First Character Of The Word With Upper Case.'
+
+grep -n "this" Text_example.txt
+'2:this line is the 1st lower case line in this file.'
+
+grep -ic "this" Text_example.txt
+'5'	
+
+grep -A 2 THIS Text_example.txt
+'THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+this line is the 1st lower case line in this file.
+This Line Has All Its First Character Of The Word With Upper Case.'
+
+grep -B 2 this Text_example.txt
+'THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+this line is the 1st lower case line in this file.'
+
+grep -C 2 this Text_example.txt
+'THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+this line is the 1st lower case line in this file.
+This Line Has All Its First Character Of The Word With Upper Case.'
+
+grep -ni this Text_example.txt*
+'Text_example.txt:1:THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.
+Text_example.txt.copy:1:THIS LINE IS THE 1ST UPPER CASE LINE IN THIS FILE.'
+
+
+#######
+# SED #
+#######
+
+echo Sunday | sed s/day/night/
+Sunnight
+
+echo day.day | sed s/day/night/
+night.day
+
+echo day.day | sed s/day/night/g
+night.night
+
+seq 5 | sed '3d'
+1
+2
+4
+5
+
+seq 5 | sed '2p'
+1
+2
+2
+3
+4
+5
+
+seq 5 | sed -n '2p'
+2
+
+seq 5 | sed '/3/d'
+1
+2
+4
+5
+
+
+#######
+# ZIP #
+######
+
+zip Text_files.zip Finn.txt Text_example.txt
+adding: Finn.txt (deflated 64%)
+adding: Text_example.txt (deflated 30%)
+
+unzip -c text_files.zip Text_example.txt => Descomprime solo ese
+
+#######
+# GZIP #
+######
+
+gzip Finn.txt Text_example.txt.  => crea los .gz de cada uno
+
+#######
+# TAR #
+######
+
+tar -czvf opentravel.gz.tar *.csv 	=> crea el tar con todos los csv
+tar -fx opentravel.gz.tar			=> para descomprimir
+
+
+Zip 	=> Para comprimir varios archivos
+GZips 	=> Solo comprime un solo archivo
+BZIP2	=> Como gzip pero para archivos grandes
+tar		=> agrupa varios archivos, puedo comprimirlos o no
+
+
+############################
+# EJECUCION DE PROCESOS    #
+############################
+
+find / -name "*.txt" -exec ls -l {} \; -exec sleep 5 \; &   => con el & lo mando a segundo plano
+
+CTRL-Z 	=> suspendo el proceso que se este ejecutando
+jobs	=> me lista todos los procesos en ejecucion disparados por el usuario
+bg	#1	=> mando el proceso con id 1 (del jobs) a segundo plano, la salida sigue saliendo por pantalla
+fg	#1	=> traigo el proceso con id 1 (del jobs) a primer plano y no puedo usar la 
+ps aux => veo los procesos del usuario
+kill -9 id => mato el proceso
+
+############################
+# 			CSVKIT    	   #
+############################
+
+csvlook -d 	'^' optd_aircraft.csv | less -S
+csvlook -ld '^' optd_aircraft.csv | less -S 			=> agrega una columna con el numero de linea
+csvstat -d 	'^' optd_aircraft.csv 						=> estadisticas, tipo de dato, etc
+csvcut 	-d 	'^' -c aircraft_type optd_aircraft.csv 		=> obtenemos una columna por su nombre
+csvsql 	-d 	'^' -i mysql optd_aircraft.csv				=> devuelve el create de la tabla para mysql
+csvgrep -d 	'^' -c icao_code -m F100 optd_aircraft.csv	=> para buscar por exp reg en una columna en especial
+
+
+
+
+	
+

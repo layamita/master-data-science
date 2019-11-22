@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Listas
+list 		= [] 	 
+len(starts)
+stars.append('d').   		agrega al final
+stars.extend(['Y'])			concatena una lista al final
+stars.remove('a')	 		quita el primero que encuentra
+stars.pop(0)				saca el elem de la pos 0, si no le pones param saca el último
+stars.count('a')
+stars.index('a')     		la pos del primero que encuentra
+
+stars.sort()				ordena alfabeticamente
+numbers.sort(key=str)		ordena como string
+numbers.sort(key=int)		ordena como entero
+stars.reverse()				modifica el orden de la lista en orden contrario
+list(sorted(numbers))		ordena numeros,no modifica la lista
+list(reversed(stars))		muestra como seria el orden inverso pero sin modificar la lista
+list(sorted(new_starts,key=str.lower))
+
+
+stars = stars + ['Z']		concatenamos dos listas
+
+stars[-1] 	Devuelve el último elemento
+stars[:2]   Hasta la pos 2 (inclusive)
+stars[:-2]	hasta la -2 (no inclusive)
+stars[1:]   excluye el -1
+
+
+'G' in stars				devuelve TRUE si el elemento está en la lista
+
+#Para tener el indice en c
+for c, val in enumerate([1,2,3]):
+    print(c,val)
+
+
+tuples		= ()
+dict		= {}
+
+#Lambda
+the_same_function = lambda x: x**2
+
+#Map
+for i in map(the_same_function,[1,2,3]):
+    print(i)
+
+
+#list comprehension
+
+a2 = [value**2 for value in t if value%2==0]
+Por cada elemento primero ejecuta el if y despues el cuadrado
+
+a3 = [value**2 if value%2==0 else 1 for value in t ]
+Por cada elemento ejecuta el cuadrado y evaua el resultado con el if
+
+Obtener una lista en mayusculas de todas las palabras de mas de dos caracteres
+a4 = [value.upper() for value in list_strings if len(value) > 2]
+	
+
+#########################
+Ejemplos
+
+a_starts.sort(key=lambda x: x.lower().count('a'),reverse=True)  Como key le pasamos una funcion lambda que pasa a minusculas y calcula las cantidades de a
+lambda_count_a = lambda x: x.lower().count('a')
+new_starts.sort(key=lambda_count_a,reverse=True)
+
+
+
+
+
+#   TUPLAS
+
+
+
+
+
+
+
+

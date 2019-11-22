@@ -1,0 +1,51 @@
+```python
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+pylab inline
+from scipy import stats
+```
+plt.fill_between? => AYUDA
+
+
+print()
+len(income)         => cant de elementos
+data.data[:,0]      => saca los datos de la primer columna del array
+type(income)        => da el tipo del dato
+sorted(income)      => ordena datos asc
+
+np.mean(income)             => saco la media (o income.mean())
+np.min(income)              => min valor del array
+np.max(income)              => max valor del array
+np.var(income)              => varianza
+np.std(income)              => variacion estandar
+np.median(income)           => saca la media
+np.percentile(income,50)    => percentil 50%
+np.linspace(valor inicio,valor finn,cant elem del array)	=> crea un array
+np.arange(0,366)			=> Crea un array de 0 a 365 posiciones
+
+plt.hist(income);   						=> histograma,  
+plt.hist(income,bins=1000);
+plt.figure(figsize=(15,10))                 => tamaño de la grafica
+plt.axvline(x=np.mean(income),color='red')  => linea vertical en la grafica
+plt.plot(x,exam_norm.pdf(x));				=> dado los valores y una funcion, dibuja su grafica
+plt.fill_between(xp,y1=0,y2=exam_norm.pdf(xp),color="red");
+plt.scatter(escuela,dineros)				=> grafica por cada elemento de los array su punto de interseccion (según pos. del array)
+
+
+
+stats.binom(n,p)					=> Para calcular la binomial
+stats.poisson(lambda)				=> Para calcular poisson lambda = n*p
+stats.norm(media,desviacion)		=> Para calcular la normal
+stats.uniform(media, desviacion)
+stats.expon(lambda	)
+stats.norm.fit(datos)				=> me da media y desviación, datos es un array
+
+
+cdf(x<=a) devuelve propabilidad
+pmf(x=a) devuelve propabilidad
+ppf(prob)  devuelve valor de x para que de la probabilidad especificada
+
+
+diff(funcion,variable)			=> devuelve la derivada en p
+solve(funcion, variable)		=> calcula el valor de la variable para que la funcion sea cero

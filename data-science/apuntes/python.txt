@@ -122,7 +122,9 @@
 # Listas #
 ##########
     stars= ['Alderaan','Arcturus','Vega']
-    len(starts)                 :: 3
+
+    len(starts) :: 3
+    set(starts) :: devuelve cantidad de elementos diferentes
 
     stars.append('d').   		agrega al final
     stars.extend(['Y'])			concatena una lista al final
@@ -130,6 +132,9 @@
     stars.pop(0)				saca el elem de la pos 0, si no le pones param saca el último
     stars.count('a')
     stars.index('a')     		la pos del primero que encuentra
+
+    [0]*10   :: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
 
     SORT
     ####
@@ -147,6 +152,10 @@
     ########################
         stars.sort(key=lambda x: x.lower().count('a'),reverse=True)
 
+
+        a_starts.sort(key=lambda x: x.lower().count('a'),reverse=True)  Como key le pasamos una funcion lambda que pasa a minusculas y calcula las cantidades de a
+        lambda_count_a = lambda x: x.lower().count('a')
+        new_starts.sort(key=lambda_count_a,reverse=True)
 
 
     stars = stars + ['Z']		concatenamos dos listas
@@ -190,14 +199,77 @@
         list_of_list=[[1,2,3],[4,5,6],[7,8,9]]
         second_list=[element for other_list in list_of_list for element in other_list]
 
+##########
+# Tuplas #
+##########
 
-    ########
-    Ejemplos
-    ########
+    tup=4,5,6           :: Genera una tupla
 
-    a_starts.sort(key=lambda x: x.lower().count('a'),reverse=True)  Como key le pasamos una funcion lambda que pasa a minusculas y calcula las cantidades de a
-    lambda_count_a = lambda x: x.lower().count('a')
-    new_starts.sort(key=lambda_count_a,reverse=True)
+    tup2=[4,5,6]
+    tup2=tuple(tup2)    :: convierte a una tupla
+
+    more_nested_lists = nested_lists + (['adios','bye']) :: Concatena una tupla
+
+    tup4=('bar','taberna','bareto')
+    tup5=tup4*2   :: ('bar', 'taberna', 'bareto', 'bar', 'taberna', 'bareto')
+
+
+
+    Unpacking tuples
+    ################
+
+    tup = (4, 5,6)
+    a,b,c=tup
+    print(a,b,c) :: 4 5 6
+
+    a,b=tup   :: genera error, deben coincidir las cantidades
+
+    Metodos
+    #######
+
+    a=(1,2,3,4,5,6,7)
+    a.count(2)  :: Devuelve la cantidad de veces que se encuentra el elemento 2
+    2 in a      :: True o False
+    a.index(6)  :: En que posición está el elemento 6, se comienza desde cero
+    aux.sort(key=lambda x: x[0])
+
+################
+# Diccionarios #
+################
+
+    d1={'key1':1, 'key2':2}
+    d1['key1']  :: 1
+
+    d2=dict(key1=1,key2=2)      :: OK
+    d2=dict('key1'=1,'key2'=2)  :: NOK keyword can't be an expression
+
+    d4=dict((('key1',1),('key2',2))) #tupla de tuplas
+    d4=dict([('key1',1),('key2',2)]) #lista de tuplas
+    d4=dict([['key1',1],['key2',2]]) #lista de listas
+    {'key1': 1, 'key2': 2}   :: siempre genera lo mismo
+
+
+    with zip function
+    #################
+    values  = 1,2,3,4,5
+    key     = ('a','b','c','d','e')
+    dict(zip(key,values))  :: {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+
+
+    Methods
+    #######
+    list(d5.keys())
+    list(d5.values())
+
+    del d5['f']         :: Borra el element con key f
+    d5.pop('c')         :: Borra el element con key f
+    d5.get('a')         :: devuelve el contenido de la key a
+    d5.clear()          :: vacia el diccionario
+    d5.update({'k':91}) :: actualiza el cont de la clave
+
+
+
+
 
 ###########
 # Strings #
@@ -234,4 +306,4 @@
 ##############
 # Operadores #
 ##############
-    not, and
+    not, and, 1 in [1,2]

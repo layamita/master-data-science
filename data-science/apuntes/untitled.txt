@@ -18,13 +18,3 @@ cat optd_por_public.csv | head -1 | tr "^" "\n" | grep -i "name" | wc -l
 sed 's/line/\n/g' Text_example_copy.txt
 
 
-
-byRevenue:          true,
-                        byVarRevenue:       true,
-                        byVarEcpmRevenue:   true
-						
-						
-						
-http://dev.prelanders.gasmobi.com/prela/demo/view.i?url=123d
-
-http://dev.prelanders.gasmobi.com/prela/demo2/view.i?url=123d

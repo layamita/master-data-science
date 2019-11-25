@@ -8,6 +8,7 @@
     a.copy()		            => creo objeto nuevo
     a.__hash__()                :: Muestra hash unico asociado al objeto
     id(a)                       :: muestra id
+    range(1,10)                 :: devuelve un listado de 1 a 10
 
 ###################
 # Using the shell #
@@ -267,6 +268,18 @@
     d5.clear()          :: vacia el diccionario
     d5.update({'k':91}) :: actualiza el cont de la clave
 
+
+
+##############
+# DataFrames #
+##############
+
+    dfdata = {
+        'province' : ['M', 'M', 'M', 'B', 'B'],
+        'population': [1.5e6, 2e6, 3e6, 5e5, 1.5e6],
+        'year' : [1900, 1950, 2000, 1900, 2000]   
+    }
+    df = pd.DataFrame(dfdata)
 
 
 

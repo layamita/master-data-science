@@ -1,3 +1,7 @@
+libreria de alebra lineal
+esta por debajo de ML y de pandas
+
+
 ##########
 # Import #
 ##########

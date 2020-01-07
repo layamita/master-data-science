@@ -1,13 +1,14 @@
 ##########
 # Import #
 ##########
-    import matplotlib.pyplot as plt
-    %matplotlib inline
+        import matplotlib.pyplot as plt
+        %matplotlib inline
 
 ############
 # Gráficos #
 ############
 
-    plt.plot(X,S,"r.")              :: Linea Continua
+    plt.plot(X,S,"r.",label='BCn')  :: Linea Continua, el label se muestra con el legend
     plt.scatter(X,S,color="red");   :: Linea Punteada
     plt.grid(True)
+	plt.legend)=

@@ -1,0 +1,17 @@
+##########
+# Import #
+##########
+
+import seaborn as sns
+
+
+#########
+# Mapas #
+#########
+
+Correlacional
+    df3.corr()
+    sns.heatmap(df3.corr())
+
+boxplot
+ax = sns.boxplot(data=df3, x='Hour',y='DepDelay')

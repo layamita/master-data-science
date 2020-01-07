@@ -1,0 +1,18 @@
+##########
+# Import #
+##########
+
+    from zipfile import ZipFile
+
+##########
+# Uso #
+##########
+
+    zip_path = 'On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2019_9.zip'
+    zf = ZipFile(zip_path)
+    csv= zf.open(zf.filelist[0])
+
+    csv.readline()  # Voy leyendo linea a linea
+    csv.seek(0)     # Puedo ir a una linea directamente
+    df = pd.read_csv(csv)
+    df.head()

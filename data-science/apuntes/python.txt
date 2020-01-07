@@ -52,21 +52,10 @@
     k.count('s')
     k.split()               :: hace un explode por espacio ' '
     '^'.join(k.split())     :: hace un imploid
+    k.zfill(6)              :: completa con ceros gasta 6 posiciones
+    .str[:2]                :: me quedo con los primeros dos caracteres
+    str.contains("(?i)origin") :: Para saber si un string contiene otro, el (?i) es exp reg para casesensi
 
-
-###########
-# Módulos #
-###########
-
-    Archivos de texto con extensión `.py` que usamos para organizar nuestro código.
-    some_module.py
-
-        def test(x):
-            return x+2
-
-    import some_module
-
-    some_module.test(5) :: Devuelve 7
 
 
 ########
@@ -267,21 +256,6 @@
     d5.get('a')         :: devuelve el contenido de la key a
     d5.clear()          :: vacia el diccionario
     d5.update({'k':91}) :: actualiza el cont de la clave
-
-
-
-##############
-# DataFrames #
-##############
-
-    dfdata = {
-        'province' : ['M', 'M', 'M', 'B', 'B'],
-        'population': [1.5e6, 2e6, 3e6, 5e5, 1.5e6],
-        'year' : [1900, 1950, 2000, 1900, 2000]   
-    }
-    df = pd.DataFrame(dfdata)
-
-
 
 
 ###########

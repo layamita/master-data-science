@@ -1,0 +1,76 @@
+La base es la serie
+
+##########
+# Import #
+##########
+
+    import pandas as pd
+
+
+
+##############
+# DataFrames #
+##############
+
+    pd.DataFrame(np.arange(12).reshape(3, 4),
+...                   columns=['A', 'B', 'C', 'D'])
+
+    dfdata = {
+        'province' : ['M', 'M', 'M', 'B', 'B'],
+        'population': [1.5e6, 2e6, 3e6, 5e5, 1.5e6],
+        'year' : [1900, 1950, 2000, 1900, 2000]   
+    }
+    df = pd.DataFrame(dfdata)
+
+    #
+    # Al comenzar a trabajar con el df 
+    #
+
+        df.describe()       # Devuelve estadisticas de las columnas
+        df.shape            # Dev (605979, 110), lines y col
+        df.drop_duplicates() #borra registros duplicados        
+        df.sample(5)        # Muestra random de elementos
+        df.columns          # Accedo a las columnas del df
+		df.dropna()         # Elimina el registro si hay un campo null
+    
+   
+
+    df.notna()          # devuelve una matriz de true/false de not null
+    df.notna().sum()    # Devuelve la cantidad de elementos no vacios por columna
+
+    #
+    # Modificar estructura 
+    #
+
+        df.drop([0, 1])     # borra las filas 0y1
+        df.drop(columns=['B', 'C']) # Borra las columnas lo mismo que :
+            df.drop(['cola','colb'], axis=1)    # Borra columas  
+
+    
+
+
+    
+    df.astype('str')    # Cast a pandas object to a specified dtype 
+
+    df.apply(np.sim)          # Aplica una funcion a los valores por columna, axis=1 por fila
+
+    
+    
+
+    
+
+    df.corr()           # Matriz correlacional
+        import seaborn as sns
+        sns.heatmap(df3.corr())     # Para dibujar la correlacional
+
+    df3.groupby(by='Tail_Number')['DepDelay']  # Agrupo por Tail_Numbery me quedo con DepDelay para operaciones
+    
+    df3.groupby('Tail_Number')['DepDelay'].agg(['mean', 'count']) # Para varias operaciones      
+        Operaciones
+            mean()
+            count()
+            unique() # devuelve los valores unicos
+            nunique() # devuelve la cantidad de un valor
+
+    df.sort_values(by='DepDelay',ascending=False)
+
